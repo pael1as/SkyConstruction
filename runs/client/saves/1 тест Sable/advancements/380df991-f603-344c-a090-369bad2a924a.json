@@ -1,0 +1,263 @@
+{
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2026-10-27 23:16:24 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:desert": "2026-10-27 23:16:25 +0300",
+      "minecraft:river": "2026-10-27 23:35:11 +0300",
+      "minecraft:plains": "2026-10-27 23:25:14 +0300"
+    },
+    "done": false
+  },
+  "create:root": {
+    "criteria": {
+      "0": "2026-10-27 23:17:32 +0300"
+    },
+    "done": true
+  },
+  "simulated:root": {
+    "criteria": {
+      "0": "2026-10-27 23:17:32 +0300"
+    },
+    "done": true
+  },
+  "aeronautics:root": {
+    "criteria": {
+      "0": "2026-10-27 23:17:32 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2026-10-27 23:17:49 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_planks": {
+    "criteria": {
+      "has_logs": "2026-10-27 23:17:49 +0300"
+    },
+    "done": true
+  },
+  "simulated:applied_kinematics": {
+    "criteria": {
+      "0": "2026-10-27 23:20:48 +0300"
+    },
+    "done": true
+  },
+  "simulated:recipes/misc/contraption_diagram": {
+    "criteria": {
+      "has_ingredient": "2026-10-27 23:20:48 +0300"
+    },
+    "done": true
+  },
+  "simulated:not_gonna_sugarcoat_it": {
+    "criteria": {
+      "0": "2026-10-27 23:21:02 +0300"
+    },
+    "done": true
+  },
+  "aeronautics:head_in_the_clouds": {
+    "criteria": {
+      "0": "2026-10-27 23:21:11 +0300"
+    },
+    "done": true
+  },
+  "create:wrench_goggles": {
+    "criteria": {
+      "1": "2026-10-27 23:21:28 +0300"
+    },
+    "done": false
+  },
+  "aeronautics:recipes/misc/aviators_goggles": {
+    "criteria": {
+      "has_ingredient": "2026-10-27 23:21:28 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2026-10-27 23:22:37 +0300"
+    },
+    "done": true
+  },
+  "simulated:measure_once_build_twice": {
+    "criteria": {
+      "0": "2026-10-27 23:35:43 +0300"
+    },
+    "done": true
+  },
+  "repurposed_structures:root": {
+    "criteria": {
+      "always": "2026-10-29 23:40:50 +0300"
+    },
+    "done": true
+  },
+  "naturescompass:natures_compass": {
+    "criteria": {
+      "has_recipe": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/cherry_boat": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "creategoggles:recipes/combat/smithing_template_duplicate": {
+    "criteria": {
+      "has_goggles": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/bamboo_raft": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "vinery:main/fruits_of_the_field": {
+    "criteria": {
+      "fruits_of_the_field": "2026-10-29 23:40:56 +0300"
+    },
+    "done": true
+  },
+  "exposure:recipes/decorations/lightroom": {
+    "criteria": {
+      "has_developed_film": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "create_enchantment_industry:root": {
+    "criteria": {
+      "0": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/campfire": {
+    "criteria": {
+      "has_the_recipe": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "vinery:recipes/campfire": {
+    "criteria": {
+      "has_coal": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "naturescompass:natures_compass_log": {
+    "criteria": {
+      "has_log": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "naturescompass:natures_compass_sapling": {
+    "criteria": {
+      "has_recipe": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2026-10-29 23:42:29 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "betterdungeons:root": {
+    "criteria": {
+      "always": "2026-10-29 23:40:50 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "create_connected:root": {
+    "criteria": {
+      "0": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "vinery:recipes/grapevine_lattice": {
+    "criteria": {
+      "has_coal": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "herbalbrews:main/root": {
+    "criteria": {
+      "seeds": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "betterdeserttemples:root": {
+    "criteria": {
+      "always": "2026-10-29 23:40:50 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/oak_boat": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "vinery:main/root": {
+    "criteria": {
+      "seeds": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/mangrove_boat": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "creategoggles:recipes/combat/smithing_template_single": {
+    "criteria": {
+      "has_goggles": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "vinery:recipes/dark_cherry_planks": {
+    "criteria": {
+      "has_cherry_logs": "2026-10-29 23:40:45 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "in_water": "2026-10-29 23:42:31 +0300"
+    },
+    "done": true
+  },
+  "DataVersion": 3955
+}

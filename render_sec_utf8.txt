@@ -1,0 +1,701 @@
+﻿Compiled from "RenderSection.java"
+public class net.caffeinemc.mods.sodium.client.render.chunk.RenderSection {
+  private final net.caffeinemc.mods.sodium.client.render.chunk.region.RenderRegion region;
+
+  private final int sectionIndex;
+
+  private final int chunkX;
+
+  private final int chunkY;
+
+  private final int chunkZ;
+
+  private long visibilityData;
+
+  private int incomingDirections;
+
+  private int lastVisibleFrame;
+
+  private int adjacentMask;
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection adjacentDown;
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection adjacentUp;
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection adjacentNorth;
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection adjacentSouth;
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection adjacentWest;
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection adjacentEast;
+
+  private boolean built;
+
+  private int flags;
+
+  private net.minecraft.world.level.block.entity.BlockEntity[] globalBlockEntities;
+
+  private net.minecraft.world.level.block.entity.BlockEntity[] culledBlockEntities;
+
+  private net.minecraft.client.renderer.texture.TextureAtlasSprite[] animatedSprites;
+
+  private net.caffeinemc.mods.sodium.client.render.chunk.translucent_sorting.data.TranslucentData translucentData;
+
+  private net.caffeinemc.mods.sodium.client.util.task.CancellationToken taskCancellationToken;
+
+  private net.caffeinemc.mods.sodium.client.render.chunk.ChunkUpdateType pendingUpdateType;
+
+  private int lastUploadFrame;
+
+  private int lastSubmittedFrame;
+
+  private boolean disposed;
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection(net.caffeinemc.mods.sodium.client.render.chunk.region.RenderRegion, int, int, int);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: lconst_0
+       6: putfield      #9                  // Field visibilityData:J
+       9: aload_0
+      10: iconst_m1
+      11: putfield      #15                 // Field lastVisibleFrame:I
+      14: aload_0
+      15: iconst_0
+      16: putfield      #19                 // Field built:Z
+      19: aload_0
+      20: iconst_0
+      21: putfield      #25                 // Field flags:I
+      24: aload_0
+      25: aconst_null
+      26: putfield      #28                 // Field taskCancellationToken:Lnet/caffeinemc/mods/sodium/client/util/task/CancellationToken;
+      29: aload_0
+      30: iconst_m1
+      31: putfield      #32                 // Field lastUploadFrame:I
+      34: aload_0
+      35: iconst_m1
+      36: putfield      #35                 // Field lastSubmittedFrame:I
+      39: aload_0
+      40: iload_2
+      41: putfield      #38                 // Field chunkX:I
+      44: aload_0
+      45: iload_3
+      46: putfield      #41                 // Field chunkY:I
+      49: aload_0
+      50: iload         4
+      52: putfield      #44                 // Field chunkZ:I
+      55: aload_0
+      56: invokevirtual #47                 // Method getChunkX:()I
+      59: bipush        7
+      61: iand
+      62: istore        5
+      64: aload_0
+      65: invokevirtual #53                 // Method getChunkY:()I
+      68: iconst_3
+      69: iand
+      70: istore        6
+      72: aload_0
+      73: invokevirtual #56                 // Method getChunkZ:()I
+      76: bipush        7
+      78: iand
+      79: istore        7
+      81: aload_0
+      82: iload         5
+      84: iload         6
+      86: iload         7
+      88: invokestatic  #59                 // Method net/caffeinemc/mods/sodium/client/render/chunk/LocalSectionIndex.pack:(III)I
+      91: putfield      #65                 // Field sectionIndex:I
+      94: aload_0
+      95: aload_1
+      96: putfield      #68                 // Field region:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion;
+      99: return
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection getAdjacent(int);
+    Code:
+       0: iload_1
+       1: tableswitch   { // 0 to 5
+
+                     0: 40
+
+                     1: 47
+
+                     2: 54
+
+                     3: 61
+
+                     4: 68
+
+                     5: 75
+               default: 82
+          }
+      40: aload_0
+      41: getfield      #72                 // Field adjacentDown:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      44: goto          83
+      47: aload_0
+      48: getfield      #76                 // Field adjacentUp:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      51: goto          83
+      54: aload_0
+      55: getfield      #79                 // Field adjacentNorth:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      58: goto          83
+      61: aload_0
+      62: getfield      #82                 // Field adjacentSouth:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      65: goto          83
+      68: aload_0
+      69: getfield      #85                 // Field adjacentWest:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      72: goto          83
+      75: aload_0
+      76: getfield      #88                 // Field adjacentEast:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      79: goto          83
+      82: aconst_null
+      83: areturn
+
+  public void setAdjacentNode(int, net.caffeinemc.mods.sodium.client.render.chunk.RenderSection);
+    Code:
+       0: aload_2
+       1: ifnonnull     22
+       4: aload_0
+       5: dup
+       6: getfield      #91                 // Field adjacentMask:I
+       9: iload_1
+      10: invokestatic  #94                 // Method net/caffeinemc/mods/sodium/client/render/chunk/occlusion/GraphDirectionSet.of:(I)I
+      13: iconst_m1
+      14: ixor
+      15: iand
+      16: putfield      #91                 // Field adjacentMask:I
+      19: goto          35
+      22: aload_0
+      23: dup
+      24: getfield      #91                 // Field adjacentMask:I
+      27: iload_1
+      28: invokestatic  #94                 // Method net/caffeinemc/mods/sodium/client/render/chunk/occlusion/GraphDirectionSet.of:(I)I
+      31: ior
+      32: putfield      #91                 // Field adjacentMask:I
+      35: iload_1
+      36: tableswitch   { // 0 to 5
+
+                     0: 76
+
+                     1: 84
+
+                     2: 92
+
+                     3: 100
+
+                     4: 108
+
+                     5: 116
+               default: 124
+          }
+      76: aload_0
+      77: aload_2
+      78: putfield      #72                 // Field adjacentDown:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      81: goto          124
+      84: aload_0
+      85: aload_2
+      86: putfield      #76                 // Field adjacentUp:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      89: goto          124
+      92: aload_0
+      93: aload_2
+      94: putfield      #79                 // Field adjacentNorth:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      97: goto          124
+     100: aload_0
+     101: aload_2
+     102: putfield      #82                 // Field adjacentSouth:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+     105: goto          124
+     108: aload_0
+     109: aload_2
+     110: putfield      #85                 // Field adjacentWest:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+     113: goto          124
+     116: aload_0
+     117: aload_2
+     118: putfield      #88                 // Field adjacentEast:Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+     121: goto          124
+     124: return
+
+  public int getAdjacentMask();
+    Code:
+       0: aload_0
+       1: getfield      #91                 // Field adjacentMask:I
+       4: ireturn
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.translucent_sorting.data.TranslucentData getTranslucentData();
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field translucentData:Lnet/caffeinemc/mods/sodium/client/render/chunk/translucent_sorting/data/TranslucentData;
+       4: areturn
+
+  public void setTranslucentData(net.caffeinemc.mods.sodium.client.render.chunk.translucent_sorting.data.TranslucentData);
+    Code:
+       0: aload_1
+       1: ifnonnull     14
+       4: new           #104                // class java/lang/IllegalArgumentException
+       7: dup
+       8: ldc           #106                // String new translucentData cannot be null
+      10: invokespecial #108                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      13: athrow
+      14: aload_0
+      15: aload_1
+      16: putfield      #100                // Field translucentData:Lnet/caffeinemc/mods/sodium/client/render/chunk/translucent_sorting/data/TranslucentData;
+      19: return
+
+  public void delete();
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field taskCancellationToken:Lnet/caffeinemc/mods/sodium/client/util/task/CancellationToken;
+       4: ifnull        21
+       7: aload_0
+       8: getfield      #28                 // Field taskCancellationToken:Lnet/caffeinemc/mods/sodium/client/util/task/CancellationToken;
+      11: invokeinterface #111,  1          // InterfaceMethod net/caffeinemc/mods/sodium/client/util/task/CancellationToken.setCancelled:()V
+      16: aload_0
+      17: aconst_null
+      18: putfield      #28                 // Field taskCancellationToken:Lnet/caffeinemc/mods/sodium/client/util/task/CancellationToken;
+      21: aload_0
+      22: invokevirtual #116                // Method clearRenderState:()Z
+      25: pop
+      26: aload_0
+      27: iconst_1
+      28: putfield      #120                // Field disposed:Z
+      31: return
+
+  public boolean setInfo(net.caffeinemc.mods.sodium.client.render.chunk.data.BuiltSectionInfo);
+    Code:
+       0: aload_1
+       1: ifnull        10
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #123                // Method setRenderState:(Lnet/caffeinemc/mods/sodium/client/render/chunk/data/BuiltSectionInfo;)Z
+       9: ireturn
+      10: aload_0
+      11: invokevirtual #116                // Method clearRenderState:()Z
+      14: ireturn
+
+  private boolean setRenderState(net.caffeinemc.mods.sodium.client.render.chunk.data.BuiltSectionInfo);
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field built:Z
+       4: istore_2
+       5: aload_0
+       6: getfield      #25                 // Field flags:I
+       9: istore_3
+      10: aload_0
+      11: getfield      #9                  // Field visibilityData:J
+      14: lstore        4
+      16: aload_0
+      17: iconst_1
+      18: putfield      #19                 // Field built:Z
+      21: aload_0
+      22: aload_1
+      23: getfield      #127                // Field net/caffeinemc/mods/sodium/client/render/chunk/data/BuiltSectionInfo.flags:I
+      26: putfield      #25                 // Field flags:I
+      29: aload_0
+      30: aload_1
+      31: getfield      #130                // Field net/caffeinemc/mods/sodium/client/render/chunk/data/BuiltSectionInfo.visibilityData:J
+      34: putfield      #9                  // Field visibilityData:J
+      37: aload_0
+      38: aload_1
+      39: getfield      #131                // Field net/caffeinemc/mods/sodium/client/render/chunk/data/BuiltSectionInfo.globalBlockEntities:[Lnet/minecraft/world/level/block/entity/BlockEntity;
+      42: putfield      #135                // Field globalBlockEntities:[Lnet/minecraft/world/level/block/entity/BlockEntity;
+      45: aload_0
+      46: aload_1
+      47: getfield      #136                // Field net/caffeinemc/mods/sodium/client/render/chunk/data/BuiltSectionInfo.culledBlockEntities:[Lnet/minecraft/world/level/block/entity/BlockEntity;
+      50: putfield      #139                // Field culledBlockEntities:[Lnet/minecraft/world/level/block/entity/BlockEntity;
+      53: aload_0
+      54: aload_1
+      55: getfield      #140                // Field net/caffeinemc/mods/sodium/client/render/chunk/data/BuiltSectionInfo.animatedSprites:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      58: putfield      #144                // Field animatedSprites:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      61: iload_2
+      62: ifeq          83
+      65: iload_3
+      66: aload_0
+      67: getfield      #25                 // Field flags:I
+      70: if_icmpne     83
+      73: lload         4
+      75: aload_0
+      76: getfield      #9                  // Field visibilityData:J
+      79: lcmp
+      80: ifeq          87
+      83: iconst_1
+      84: goto          88
+      87: iconst_0
+      88: ireturn
+
+  private boolean clearRenderState();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field built:Z
+       4: istore_1
+       5: aload_0
+       6: iconst_0
+       7: putfield      #19                 // Field built:Z
+      10: aload_0
+      11: iconst_0
+      12: putfield      #25                 // Field flags:I
+      15: aload_0
+      16: lconst_0
+      17: putfield      #9                  // Field visibilityData:J
+      20: aload_0
+      21: aconst_null
+      22: putfield      #135                // Field globalBlockEntities:[Lnet/minecraft/world/level/block/entity/BlockEntity;
+      25: aload_0
+      26: aconst_null
+      27: putfield      #139                // Field culledBlockEntities:[Lnet/minecraft/world/level/block/entity/BlockEntity;
+      30: aload_0
+      31: aconst_null
+      32: putfield      #144                // Field animatedSprites:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      35: iload_1
+      36: ireturn
+
+  public net.minecraft.core.SectionPos getPosition();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field chunkX:I
+       4: aload_0
+       5: getfield      #41                 // Field chunkY:I
+       8: aload_0
+       9: getfield      #44                 // Field chunkZ:I
+      12: invokestatic  #145                // Method net/minecraft/core/SectionPos.of:(III)Lnet/minecraft/core/SectionPos;
+      15: areturn
+
+  public int getOriginX();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field chunkX:I
+       4: iconst_4
+       5: ishl
+       6: ireturn
+
+  public int getOriginY();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field chunkY:I
+       4: iconst_4
+       5: ishl
+       6: ireturn
+
+  public int getOriginZ();
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field chunkZ:I
+       4: iconst_4
+       5: ishl
+       6: ireturn
+
+  public float getSquaredDistance(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #150                // Method net/minecraft/core/BlockPos.getX:()I
+       5: i2f
+       6: ldc           #155                // float 0.5f
+       8: fadd
+       9: aload_1
+      10: invokevirtual #156                // Method net/minecraft/core/BlockPos.getY:()I
+      13: i2f
+      14: ldc           #155                // float 0.5f
+      16: fadd
+      17: aload_1
+      18: invokevirtual #159                // Method net/minecraft/core/BlockPos.getZ:()I
+      21: i2f
+      22: ldc           #155                // float 0.5f
+      24: fadd
+      25: invokevirtual #162                // Method getSquaredDistance:(FFF)F
+      28: freturn
+
+  public float getSquaredDistance(float, float, float);
+    Code:
+       0: fload_1
+       1: aload_0
+       2: invokevirtual #166                // Method getCenterX:()I
+       5: i2f
+       6: fsub
+       7: fstore        4
+       9: fload_2
+      10: aload_0
+      11: invokevirtual #169                // Method getCenterY:()I
+      14: i2f
+      15: fsub
+      16: fstore        5
+      18: fload_3
+      19: aload_0
+      20: invokevirtual #172                // Method getCenterZ:()I
+      23: i2f
+      24: fsub
+      25: fstore        6
+      27: fload         4
+      29: fload         4
+      31: fmul
+      32: fload         5
+      34: fload         5
+      36: fmul
+      37: fadd
+      38: fload         6
+      40: fload         6
+      42: fmul
+      43: fadd
+      44: freturn
+
+  public int getCenterX();
+    Code:
+       0: aload_0
+       1: invokevirtual #175                // Method getOriginX:()I
+       4: bipush        8
+       6: iadd
+       7: ireturn
+
+  public int getCenterY();
+    Code:
+       0: aload_0
+       1: invokevirtual #178                // Method getOriginY:()I
+       4: bipush        8
+       6: iadd
+       7: ireturn
+
+  public int getCenterZ();
+    Code:
+       0: aload_0
+       1: invokevirtual #181                // Method getOriginZ:()I
+       4: bipush        8
+       6: iadd
+       7: ireturn
+
+  public int getChunkX();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field chunkX:I
+       4: ireturn
+
+  public int getChunkY();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field chunkY:I
+       4: ireturn
+
+  public int getChunkZ();
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field chunkZ:I
+       4: ireturn
+
+  public boolean isDisposed();
+    Code:
+       0: aload_0
+       1: getfield      #120                // Field disposed:Z
+       4: ireturn
+
+  public java.lang.String toString();
+    Code:
+       0: ldc           #184                // String RenderSection at chunk (%d, %d, %d) from (%d, %d, %d) to (%d, %d, %d)
+       2: bipush        9
+       4: anewarray     #2                  // class java/lang/Object
+       7: dup
+       8: iconst_0
+       9: aload_0
+      10: getfield      #38                 // Field chunkX:I
+      13: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      16: aastore
+      17: dup
+      18: iconst_1
+      19: aload_0
+      20: getfield      #41                 // Field chunkY:I
+      23: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      26: aastore
+      27: dup
+      28: iconst_2
+      29: aload_0
+      30: getfield      #44                 // Field chunkZ:I
+      33: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      36: aastore
+      37: dup
+      38: iconst_3
+      39: aload_0
+      40: invokevirtual #175                // Method getOriginX:()I
+      43: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      46: aastore
+      47: dup
+      48: iconst_4
+      49: aload_0
+      50: invokevirtual #178                // Method getOriginY:()I
+      53: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      56: aastore
+      57: dup
+      58: iconst_5
+      59: aload_0
+      60: invokevirtual #181                // Method getOriginZ:()I
+      63: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      66: aastore
+      67: dup
+      68: bipush        6
+      70: aload_0
+      71: invokevirtual #175                // Method getOriginX:()I
+      74: bipush        15
+      76: iadd
+      77: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      80: aastore
+      81: dup
+      82: bipush        7
+      84: aload_0
+      85: invokevirtual #178                // Method getOriginY:()I
+      88: bipush        15
+      90: iadd
+      91: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      94: aastore
+      95: dup
+      96: bipush        8
+      98: aload_0
+      99: invokevirtual #181                // Method getOriginZ:()I
+     102: bipush        15
+     104: iadd
+     105: invokestatic  #186                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     108: aastore
+     109: invokestatic  #192                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     112: areturn
+
+  public boolean isBuilt();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field built:Z
+       4: ireturn
+
+  public int getSectionIndex();
+    Code:
+       0: aload_0
+       1: getfield      #65                 // Field sectionIndex:I
+       4: ireturn
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.region.RenderRegion getRegion();
+    Code:
+       0: aload_0
+       1: getfield      #68                 // Field region:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion;
+       4: areturn
+
+  public void setLastVisibleFrame(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #15                 // Field lastVisibleFrame:I
+       5: return
+
+  public int getLastVisibleFrame();
+    Code:
+       0: aload_0
+       1: getfield      #15                 // Field lastVisibleFrame:I
+       4: ireturn
+
+  public int getIncomingDirections();
+    Code:
+       0: aload_0
+       1: getfield      #198                // Field incomingDirections:I
+       4: ireturn
+
+  public void addIncomingDirections(int);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #198                // Field incomingDirections:I
+       5: iload_1
+       6: ior
+       7: putfield      #198                // Field incomingDirections:I
+      10: return
+
+  public void setIncomingDirections(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #198                // Field incomingDirections:I
+       5: return
+
+  public int getFlags();
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field flags:I
+       4: ireturn
+
+  public long getVisibilityData();
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field visibilityData:J
+       4: lreturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite[] getAnimatedSprites();
+    Code:
+       0: aload_0
+       1: getfield      #144                // Field animatedSprites:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+       4: areturn
+
+  public net.minecraft.world.level.block.entity.BlockEntity[] getCulledBlockEntities();
+    Code:
+       0: aload_0
+       1: getfield      #139                // Field culledBlockEntities:[Lnet/minecraft/world/level/block/entity/BlockEntity;
+       4: areturn
+
+  public net.minecraft.world.level.block.entity.BlockEntity[] getGlobalBlockEntities();
+    Code:
+       0: aload_0
+       1: getfield      #135                // Field globalBlockEntities:[Lnet/minecraft/world/level/block/entity/BlockEntity;
+       4: areturn
+
+  public net.caffeinemc.mods.sodium.client.util.task.CancellationToken getTaskCancellationToken();
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field taskCancellationToken:Lnet/caffeinemc/mods/sodium/client/util/task/CancellationToken;
+       4: areturn
+
+  public void setTaskCancellationToken(net.caffeinemc.mods.sodium.client.util.task.CancellationToken);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #28                 // Field taskCancellationToken:Lnet/caffeinemc/mods/sodium/client/util/task/CancellationToken;
+       5: return
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.ChunkUpdateType getPendingUpdate();
+    Code:
+       0: aload_0
+       1: getfield      #201                // Field pendingUpdateType:Lnet/caffeinemc/mods/sodium/client/render/chunk/ChunkUpdateType;
+       4: areturn
+
+  public void setPendingUpdate(net.caffeinemc.mods.sodium.client.render.chunk.ChunkUpdateType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #201                // Field pendingUpdateType:Lnet/caffeinemc/mods/sodium/client/render/chunk/ChunkUpdateType;
+       5: return
+
+  public void prepareTrigger(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field translucentData:Lnet/caffeinemc/mods/sodium/client/render/chunk/translucent_sorting/data/TranslucentData;
+       4: ifnull        15
+       7: aload_0
+       8: getfield      #100                // Field translucentData:Lnet/caffeinemc/mods/sodium/client/render/chunk/translucent_sorting/data/TranslucentData;
+      11: iload_1
+      12: invokevirtual #205                // Method net/caffeinemc/mods/sodium/client/render/chunk/translucent_sorting/data/TranslucentData.prepareTrigger:(Z)V
+      15: return
+
+  public int getLastUploadFrame();
+    Code:
+       0: aload_0
+       1: getfield      #32                 // Field lastUploadFrame:I
+       4: ireturn
+
+  public void setLastUploadFrame(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #32                 // Field lastUploadFrame:I
+       5: return
+
+  public int getLastSubmittedFrame();
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field lastSubmittedFrame:I
+       4: ireturn
+
+  public void setLastSubmittedFrame(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #35                 // Field lastSubmittedFrame:I
+       5: return
+}

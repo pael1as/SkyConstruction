@@ -1,0 +1,435 @@
+﻿Compiled from "RenderRegion.java"
+public class net.caffeinemc.mods.sodium.client.render.chunk.region.RenderRegion {
+  public static final int REGION_WIDTH;
+
+  public static final int REGION_HEIGHT;
+
+  public static final int REGION_LENGTH;
+
+  public static final int REGION_WIDTH_M;
+
+  public static final int REGION_HEIGHT_M;
+
+  public static final int REGION_LENGTH_M;
+
+  public static final int REGION_WIDTH_SH;
+
+  public static final int REGION_HEIGHT_SH;
+
+  public static final int REGION_LENGTH_SH;
+
+  public static final int REGION_SIZE;
+
+  private final net.caffeinemc.mods.sodium.client.gl.arena.staging.StagingBuffer stagingBuffer;
+
+  private final int x;
+
+  private final int y;
+
+  private final int z;
+
+  private final net.caffeinemc.mods.sodium.client.render.chunk.lists.ChunkRenderList renderList;
+
+  private final net.caffeinemc.mods.sodium.client.render.chunk.RenderSection[] sections;
+
+  private int sectionCount;
+
+  private final java.util.Map<net.caffeinemc.mods.sodium.client.render.chunk.terrain.TerrainRenderPass, net.caffeinemc.mods.sodium.client.render.chunk.data.SectionRenderDataStorage> sectionRenderData;
+
+  private net.caffeinemc.mods.sodium.client.render.chunk.region.RenderRegion$DeviceResources resources;
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.region.RenderRegion(int, int, int, net.caffeinemc.mods.sodium.client.gl.arena.staging.StagingBuffer);
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: sipush        256
+       8: anewarray     #9                  // class net/caffeinemc/mods/sodium/client/render/chunk/RenderSection
+      11: putfield      #11                 // Field sections:[Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      14: aload_0
+      15: new           #15                 // class it/unimi/dsi/fastutil/objects/Reference2ReferenceOpenHashMap
+      18: dup
+      19: invokespecial #17                 // Method it/unimi/dsi/fastutil/objects/Reference2ReferenceOpenHashMap."<init>":()V
+      22: putfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+      25: aload_0
+      26: iload_1
+      27: putfield      #22                 // Field x:I
+      30: aload_0
+      31: iload_2
+      32: putfield      #26                 // Field y:I
+      35: aload_0
+      36: iload_3
+      37: putfield      #29                 // Field z:I
+      40: aload_0
+      41: aload         4
+      43: putfield      #32                 // Field stagingBuffer:Lnet/caffeinemc/mods/sodium/client/gl/arena/staging/StagingBuffer;
+      46: aload_0
+      47: new           #36                 // class net/caffeinemc/mods/sodium/client/render/chunk/lists/ChunkRenderList
+      50: dup
+      51: aload_0
+      52: invokespecial #38                 // Method net/caffeinemc/mods/sodium/client/render/chunk/lists/ChunkRenderList."<init>":(Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion;)V
+      55: putfield      #41                 // Field renderList:Lnet/caffeinemc/mods/sodium/client/render/chunk/lists/ChunkRenderList;
+      58: return
+
+  public static long key(int, int, int);
+    Code:
+       0: iload_0
+       1: iload_1
+       2: iload_2
+       3: invokestatic  #45                 // Method net/minecraft/core/SectionPos.asLong:(III)J
+       6: lreturn
+
+  public int getX();
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field x:I
+       4: ireturn
+
+  public int getY();
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field y:I
+       4: ireturn
+
+  public int getZ();
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field z:I
+       4: ireturn
+
+  public int getChunkX();
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field x:I
+       4: getstatic     #51                 // Field REGION_WIDTH_SH:I
+       7: ishl
+       8: ireturn
+
+  public int getChunkY();
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field y:I
+       4: getstatic     #54                 // Field REGION_HEIGHT_SH:I
+       7: ishl
+       8: ireturn
+
+  public int getChunkZ();
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field z:I
+       4: getstatic     #57                 // Field REGION_LENGTH_SH:I
+       7: ishl
+       8: ireturn
+
+  public int getOriginX();
+    Code:
+       0: aload_0
+       1: invokevirtual #60                 // Method getChunkX:()I
+       4: iconst_4
+       5: ishl
+       6: ireturn
+
+  public int getOriginY();
+    Code:
+       0: aload_0
+       1: invokevirtual #64                 // Method getChunkY:()I
+       4: iconst_4
+       5: ishl
+       6: ireturn
+
+  public int getOriginZ();
+    Code:
+       0: aload_0
+       1: invokevirtual #67                 // Method getChunkZ:()I
+       4: iconst_4
+       5: ishl
+       6: ireturn
+
+  public void delete(net.caffeinemc.mods.sodium.client.gl.device.CommandList);
+    Code:
+       0: aload_0
+       1: getfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+       4: invokeinterface #70,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #76,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      14: astore_2
+      15: aload_2
+      16: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      21: ifeq          41
+      24: aload_2
+      25: invokeinterface #88,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      30: checkcast     #92                 // class net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage
+      33: astore_3
+      34: aload_3
+      35: invokevirtual #94                 // Method net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage.delete:()V
+      38: goto          15
+      41: aload_0
+      42: getfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+      45: invokeinterface #97,  1           // InterfaceMethod java/util/Map.clear:()V
+      50: aload_0
+      51: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      54: ifnull        70
+      57: aload_0
+      58: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      61: aload_1
+      62: invokevirtual #104                // Method net/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources.delete:(Lnet/caffeinemc/mods/sodium/client/gl/device/CommandList;)V
+      65: aload_0
+      66: aconst_null
+      67: putfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      70: aload_0
+      71: getfield      #11                 // Field sections:[Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      74: aconst_null
+      75: invokestatic  #109                // Method java/util/Arrays.fill:([Ljava/lang/Object;Ljava/lang/Object;)V
+      78: return
+
+  public boolean isEmpty();
+    Code:
+       0: aload_0
+       1: getfield      #115                // Field sectionCount:I
+       4: ifne          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.data.SectionRenderDataStorage getStorage(net.caffeinemc.mods.sodium.client.render.chunk.terrain.TerrainRenderPass);
+    Code:
+       0: aload_0
+       1: getfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #118,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #92                 // class net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage
+      13: areturn
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.data.SectionRenderDataStorage createStorage(net.caffeinemc.mods.sodium.client.render.chunk.terrain.TerrainRenderPass);
+    Code:
+       0: aload_0
+       1: getfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #118,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #92                 // class net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage
+      13: astore_2
+      14: aload_2
+      15: ifnonnull     42
+      18: new           #92                 // class net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage
+      21: dup
+      22: aload_1
+      23: invokevirtual #122                // Method net/caffeinemc/mods/sodium/client/render/chunk/terrain/TerrainRenderPass.isTranslucent:()Z
+      26: invokespecial #127                // Method net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage."<init>":(Z)V
+      29: astore_2
+      30: aload_0
+      31: getfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+      34: aload_1
+      35: aload_2
+      36: invokeinterface #130,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      41: pop
+      42: aload_2
+      43: areturn
+
+  public void refreshTesselation(net.caffeinemc.mods.sodium.client.gl.device.CommandList);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+       4: ifnull        23
+       7: aload_0
+       8: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      11: aload_1
+      12: invokevirtual #134                // Method net/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources.deleteTessellation:(Lnet/caffeinemc/mods/sodium/client/gl/device/CommandList;)V
+      15: aload_0
+      16: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      19: aload_1
+      20: invokevirtual #137                // Method net/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources.deleteIndexedTessellation:(Lnet/caffeinemc/mods/sodium/client/gl/device/CommandList;)V
+      23: aload_0
+      24: getfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+      27: invokeinterface #70,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      32: invokeinterface #76,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      37: astore_2
+      38: aload_2
+      39: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      44: ifeq          64
+      47: aload_2
+      48: invokeinterface #88,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      53: checkcast     #92                 // class net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage
+      56: astore_3
+      57: aload_3
+      58: invokevirtual #140                // Method net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage.onBufferResized:()V
+      61: goto          38
+      64: return
+
+  public void refreshIndexedTesselation(net.caffeinemc.mods.sodium.client.gl.device.CommandList);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+       4: ifnull        15
+       7: aload_0
+       8: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      11: aload_1
+      12: invokevirtual #137                // Method net/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources.deleteIndexedTessellation:(Lnet/caffeinemc/mods/sodium/client/gl/device/CommandList;)V
+      15: aload_0
+      16: getfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+      19: getstatic     #143                // Field net/caffeinemc/mods/sodium/client/render/chunk/terrain/DefaultTerrainRenderPasses.TRANSLUCENT:Lnet/caffeinemc/mods/sodium/client/render/chunk/terrain/TerrainRenderPass;
+      22: invokeinterface #118,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      27: checkcast     #92                 // class net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage
+      30: invokevirtual #149                // Method net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage.onIndexBufferResized:()V
+      33: return
+
+  public void addSection(net.caffeinemc.mods.sodium.client.render.chunk.RenderSection);
+    Code:
+       0: aload_1
+       1: invokevirtual #152                // Method net/caffeinemc/mods/sodium/client/render/chunk/RenderSection.getSectionIndex:()I
+       4: istore_2
+       5: aload_0
+       6: getfield      #11                 // Field sections:[Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+       9: iload_2
+      10: aaload
+      11: astore_3
+      12: aload_3
+      13: ifnull        26
+      16: new           #155                // class java/lang/IllegalStateException
+      19: dup
+      20: ldc           #157                // String Section has already been added to the region
+      22: invokespecial #159                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      25: athrow
+      26: aload_0
+      27: getfield      #11                 // Field sections:[Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      30: iload_2
+      31: aload_1
+      32: aastore
+      33: aload_0
+      34: dup
+      35: getfield      #115                // Field sectionCount:I
+      38: iconst_1
+      39: iadd
+      40: putfield      #115                // Field sectionCount:I
+      43: return
+
+  public void removeSection(net.caffeinemc.mods.sodium.client.render.chunk.RenderSection);
+    Code:
+       0: aload_1
+       1: invokevirtual #152                // Method net/caffeinemc/mods/sodium/client/render/chunk/RenderSection.getSectionIndex:()I
+       4: istore_2
+       5: aload_0
+       6: getfield      #11                 // Field sections:[Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+       9: iload_2
+      10: aaload
+      11: astore_3
+      12: aload_3
+      13: ifnonnull     26
+      16: new           #155                // class java/lang/IllegalStateException
+      19: dup
+      20: ldc           #162                // String Section was not loaded within the region
+      22: invokespecial #159                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      25: athrow
+      26: aload_3
+      27: aload_1
+      28: if_acmpeq     41
+      31: new           #155                // class java/lang/IllegalStateException
+      34: dup
+      35: ldc           #164                // String Tried to remove the wrong section
+      37: invokespecial #159                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      40: athrow
+      41: aload_0
+      42: getfield      #18                 // Field sectionRenderData:Ljava/util/Map;
+      45: invokeinterface #70,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      50: invokeinterface #76,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      55: astore        4
+      57: aload         4
+      59: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      64: ifeq          88
+      67: aload         4
+      69: invokeinterface #88,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      74: checkcast     #92                 // class net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage
+      77: astore        5
+      79: aload         5
+      81: iload_2
+      82: invokevirtual #166                // Method net/caffeinemc/mods/sodium/client/render/chunk/data/SectionRenderDataStorage.removeData:(I)V
+      85: goto          57
+      88: aload_0
+      89: getfield      #11                 // Field sections:[Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+      92: iload_2
+      93: aconst_null
+      94: aastore
+      95: aload_0
+      96: dup
+      97: getfield      #115                // Field sectionCount:I
+     100: iconst_1
+     101: isub
+     102: putfield      #115                // Field sectionCount:I
+     105: return
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.RenderSection getSection(int);
+    Code:
+       0: aload_0
+       1: getfield      #11                 // Field sections:[Lnet/caffeinemc/mods/sodium/client/render/chunk/RenderSection;
+       4: iload_1
+       5: aaload
+       6: areturn
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.region.RenderRegion$DeviceResources getResources();
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+       4: areturn
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.region.RenderRegion$DeviceResources createResources(net.caffeinemc.mods.sodium.client.gl.device.CommandList);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+       4: ifnonnull     23
+       7: aload_0
+       8: new           #105                // class net/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources
+      11: dup
+      12: aload_1
+      13: aload_0
+      14: getfield      #32                 // Field stagingBuffer:Lnet/caffeinemc/mods/sodium/client/gl/arena/staging/StagingBuffer;
+      17: invokespecial #170                // Method net/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources."<init>":(Lnet/caffeinemc/mods/sodium/client/gl/device/CommandList;Lnet/caffeinemc/mods/sodium/client/gl/arena/staging/StagingBuffer;)V
+      20: putfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      23: aload_0
+      24: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      27: areturn
+
+  public void update(net.caffeinemc.mods.sodium.client.gl.device.CommandList);
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+       4: ifnull        30
+       7: aload_0
+       8: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      11: invokevirtual #173                // Method net/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources.shouldDelete:()Z
+      14: ifeq          30
+      17: aload_0
+      18: getfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      21: aload_1
+      22: invokevirtual #104                // Method net/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources.delete:(Lnet/caffeinemc/mods/sodium/client/gl/device/CommandList;)V
+      25: aload_0
+      26: aconst_null
+      27: putfield      #100                // Field resources:Lnet/caffeinemc/mods/sodium/client/render/chunk/region/RenderRegion$DeviceResources;
+      30: return
+
+  public net.caffeinemc.mods.sodium.client.render.chunk.lists.ChunkRenderList getRenderList();
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field renderList:Lnet/caffeinemc/mods/sodium/client/render/chunk/lists/ChunkRenderList;
+       4: areturn
+
+  static {};
+    Code:
+       0: bipush        7
+       2: invokestatic  #176                // Method java/lang/Integer.bitCount:(I)I
+       5: putstatic     #51                 // Field REGION_WIDTH_SH:I
+       8: iconst_3
+       9: invokestatic  #176                // Method java/lang/Integer.bitCount:(I)I
+      12: putstatic     #54                 // Field REGION_HEIGHT_SH:I
+      15: bipush        7
+      17: invokestatic  #176                // Method java/lang/Integer.bitCount:(I)I
+      20: putstatic     #57                 // Field REGION_LENGTH_SH:I
+      23: bipush        8
+      25: invokestatic  #182                // Method net/caffeinemc/mods/sodium/client/util/MathUtil.isPowerOfTwo:(I)Z
+      28: invokestatic  #188                // Method org/apache/commons/lang3/Validate.isTrue:(Z)V
+      31: iconst_4
+      32: invokestatic  #182                // Method net/caffeinemc/mods/sodium/client/util/MathUtil.isPowerOfTwo:(I)Z
+      35: invokestatic  #188                // Method org/apache/commons/lang3/Validate.isTrue:(Z)V
+      38: bipush        8
+      40: invokestatic  #182                // Method net/caffeinemc/mods/sodium/client/util/MathUtil.isPowerOfTwo:(I)Z
+      43: invokestatic  #188                // Method org/apache/commons/lang3/Validate.isTrue:(Z)V
+      46: return
+}

@@ -1,0 +1,50 @@
+/tp ~ 1000 ~
+/tp 0 ~ 0
+/skyforge 10 -64 1000
+/setblock ~ 500 ~ minecraft:acacia_planks
+/tp ~ 500 ~
+/setblock ~ 500 ~ minecraft:acacia_planks
+/setblock ~ 319 ~ minecraft:acacia_planks
+/tp 0 ~ 0
+/skyforge 10 -64 1000
+/setblock ~ 500 ~ minecraft:acacia_planks
+/tp ~ 500 ~
+/setblock ~ 990 ~ minecraft:acacia_planks
+/tp ~ 1000 ~
+/tp ~ 2000 ~
+/setblock ~ 2000 ~ minecraft:acacia_planks
+/setblock ~ 3000 ~ minecraft:acacia_planks
+/tp ~ 3000 ~
+/skyforge 3125 -64 1000
+/setblock ~ 2000 ~ minecraft:acacia_planks
+/tp ~ 2000 ~
+/skyforge 3125 -64 2000
+/tp ~ 2000 ~
+/setblock ~ 2000 ~ minecraft:acacia_planks
+/setblock ~ 1999 ~ minecraft:acacia_planks
+/tp ~ 2000 ~
+/setblock ~ 319 ~ minecraft:acacia_planks
+/setblock ~ 1999 ~ minecraft:acacia_planks
+/tp ~ 2000 ~
+/skyforge 3125 -64 1000
+/tp ~ 320 ~
+/setblock ~ 319 ~ minecraft:acacia_planks
+/setblock ~ 999 ~ minecraft:acacia_planks
+/tp ~ 1000 ~
+/skyforge 3125 -64 1000
+/tp ~ 1000 ~
+/setblock ~ 999 ~ minecraft:acacia_planks
+/skyforge 3125 -64 2000
+/setblock ~ 1999 ~ minecraft:acacia_planks
+/tp ~ 1000 ~
+/tp ~ 2000 ~
+/skyforge 3125 -64 1000
+/setblock ~ 319 ~ aeronautics:adjustable_burner
+/tp @a 0 320 0
+/skyforge 3125 -64 1000
+/time set day
+/reload
+/tp @a 0 320 0
+/tp @a 0 1000 0
+/tp @a 0 1200 0
+/setblock ~ 999 ~ minecraft:acacia_planks

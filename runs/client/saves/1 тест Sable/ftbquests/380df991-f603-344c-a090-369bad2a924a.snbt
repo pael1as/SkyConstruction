@@ -1,0 +1,12 @@
+{
+	version: 1
+	uuid: "380df991f603344ca090369bad2a924a"
+	name: "Dev#380df991"
+	lock: false
+	rewards_blocked: false
+	task_progress: { }
+	started: { }
+	completed: { }
+	claimed_rewards: { }
+	player_data: { }
+}

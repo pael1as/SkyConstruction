@@ -1,0 +1,30 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.example.skyconstruction.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "plugin": "com.example.skyconstruction.mixin.SkyConstructionMixinPlugin",
+  "priority": 2000,
+  "mixins": [
+    "ChunkAccessAccessor",
+    "ChunkAccessMixin",
+    "ChunkHolderMixin",
+    "ChunkSerializerMixin",
+    "ChunkSkyLightSourcesMixin",
+    "HeightmapMixin",
+    "LevelChunkMixin",
+    "LevelHeightAccessorMixin",
+    "LevelMixin",
+    "LithiumCollisionSweeperMixin",
+    "SableLightEngineMixin",
+    "SablePhysicsMixin"
+  ],
+  "client": [
+    "LayerLightSectionStorageMixin",
+    "SodiumRenderSectionManagerMixin",
+    "ViewAreaMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

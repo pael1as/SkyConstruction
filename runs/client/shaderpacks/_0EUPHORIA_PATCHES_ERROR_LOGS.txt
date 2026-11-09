@@ -1,0 +1,7 @@
+2026-10-29 23:39:22 [ERROR] EuphoriaPatcher: Error checking for existing patched shaders: E:\ModMCproject\SkyConstruction\runs\client\shaderpacks
+2026-10-29 23:39:22 [ERROR] EuphoriaPatcher: === SHADER NOT FOUND ===
+2026-10-29 23:39:22 [ERROR] EuphoriaPatcher: Required: ComplementaryShaders r5.7.1
+2026-10-29 23:39:22 [ERROR] EuphoriaPatcher: 
+2026-10-29 23:39:22 [ERROR] EuphoriaPatcher: A newer version of EuphoriaPatches is available!
+2026-10-29 23:39:22 [ERROR] EuphoriaPatcher: SOLUTION: Update to version 1.10.5 along with the compatible shader version: Complementary_r5.9.3
+2026-10-29 23:39:22 [ERROR] EuphoriaPatcher: Download from: https://euphoriapatches.com/download
