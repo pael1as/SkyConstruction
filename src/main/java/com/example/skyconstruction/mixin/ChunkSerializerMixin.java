@@ -1,6 +1,6 @@
 package com.example.skyconstruction.mixin;
 
-import com.example.skyconstruction.SkyConstruction;
+import com.example.skyconstruction.SkyConstructionVoxyForge;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -80,7 +80,7 @@ public abstract class ChunkSerializerMixin {
                     biomeCodec = makeBiomeCodec(registry);
                 }
                 int sectionY = minSection + j;
-                SkyConstruction.LOGGER.debug("[SkyConstruction] Сохранение дополнительной секции {} (Y={}) для чанка {}", j, sectionY, chunk.getPos());
+                SkyConstructionVoxyForge.LOGGER.debug("[SkyConstruction] Сохранение дополнительной секции {} (Y={}) для чанка {}", j, sectionY, chunk.getPos());
                 CompoundTag sectionTag = new CompoundTag();
                 sectionTag.putInt("Y", sectionY);
                 sectionTag.put("block_states", BLOCK_STATE_CODEC.encodeStart(NbtOps.INSTANCE, section.getStates()).getOrThrow());

@@ -31,11 +31,13 @@ versionRange = "[0.6.9,)"
 ordering = "AFTER"
 side = "CLIENT"
 
-[[dependencies.${mod_id}]]
-modId = "lithium"
-type = "optional"
-ordering = "NONE"
-side = "BOTH"
-
 [[mixins]]
 config = "skyconstruction.mixins.json"
+
+
+[[dependencies.${mod_id}]]
+    modId = "voxy_neoforged"
+    type = "required"
+    versionRange = "[0.1.0,)"
+    ordering = "AFTER"
+    side = "CLIENT"

@@ -16,6 +16,7 @@ out/
 
 # Minecraft Run & Test environments
 run/
+runs/
 logs/
 crash-reports/
 

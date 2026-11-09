@@ -1,6 +1,6 @@
 package com.example.skyconstruction.command;
 
-import com.example.skyconstruction.SkyConstruction;
+import com.example.skyconstruction.SkyConstructionVoxyForge;
 import com.example.skyconstruction.data.SkyConstructionData;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -112,7 +112,7 @@ public class SkyConstructionCommand {
         int maxChunkZ = centerChunk.z + radius;
 
         // Создаем процедурную задачу на пошаговое обновление чанков
-        SkyConstruction.ChunkZoneBatchTask task = new SkyConstruction.ChunkZoneBatchTask(
+        SkyConstructionVoxyForge.ChunkZoneBatchTask task = new SkyConstructionVoxyForge.ChunkZoneBatchTask(
                 level,
                 source.getPlayer(),
                 minChunkX,
@@ -125,7 +125,7 @@ public class SkyConstructionCommand {
         );
 
         // Помещаем задачу в очередь тиков сервера
-        SkyConstruction.queueZoneTask(task);
+        SkyConstructionVoxyForge.queueZoneTask(task);
 
         // Отправляем игроку подтверждение запуска пошаговой обработки
         source.sendSuccess(() -> Component.literal(

@@ -1,6 +1,6 @@
 package com.example.skyconstruction.network;
 
-import com.example.skyconstruction.SkyConstruction;
+import com.example.skyconstruction.SkyConstructionVoxyForge;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 public record SkyConstructionSyncPayload(int chunkX, int chunkZ, int minY, int maxY) implements CustomPacketPayload {
 
     public static final Type<SkyConstructionSyncPayload> TYPE = new Type<>(
-            ResourceLocation.fromNamespaceAndPath(SkyConstruction.MOD_ID, "sync_height_zone")
+            ResourceLocation.fromNamespaceAndPath(SkyConstructionVoxyForge.MOD_ID, "sync_height_zone")
     );
 
     public static final StreamCodec<ByteBuf, SkyConstructionSyncPayload> STREAM_CODEC = StreamCodec.of(

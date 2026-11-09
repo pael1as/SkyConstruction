@@ -1,6 +1,6 @@
 package com.example.skyconstruction.network;
 
-import com.example.skyconstruction.SkyConstruction;
+import com.example.skyconstruction.SkyConstructionVoxyForge;
 import com.example.skyconstruction.client.ClientSkyConstructionData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.ChunkPos;
@@ -32,7 +32,7 @@ public class SkyConstructionNetwork {
      * Обработчик пакета синхронизации на стороне клиента.
      */
     private static void handleSync(SkyConstructionSyncPayload payload, IPayloadContext context) {
-        SkyConstruction.LOGGER.debug("[SkyConstruction] Получен пакет SkyConstructionSyncPayload: Chunk[{}, {}], Y=[{}..{}]", payload.chunkX(), payload.chunkZ(), payload.minY(), payload.maxY());
+        SkyConstructionVoxyForge.LOGGER.debug("[SkyConstruction] Получен пакет SkyConstructionSyncPayload: Chunk[{}, {}], Y=[{}..{}]", payload.chunkX(), payload.chunkZ(), payload.minY(), payload.maxY());
 
         context.enqueueWork(() -> {
             int oldMaxY = ClientSkyConstructionData.getGlobalMaxY();

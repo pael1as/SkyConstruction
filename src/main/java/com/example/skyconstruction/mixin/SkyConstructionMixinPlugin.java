@@ -60,7 +60,26 @@ public class SkyConstructionMixinPlugin implements IMixinConfigPlugin {
             return false;
         }
 
-        // Миксины Sodium помечены @Pseudo, поэтому Mixin безопасно применит их при наличии Sodium
+        if (mixinClassName.contains("Voxy")) {
+            try {
+                if (net.neoforged.fml.ModList.get() != null) {
+                    return net.neoforged.fml.ModList.get().isLoaded("voxy")
+                        || net.neoforged.fml.ModList.get().isLoaded("voxy_neoforged");
+                }
+                if (net.neoforged.fml.loading.FMLLoader.getLoadingModList() != null) {
+                    return net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById("voxy") != null
+                        || net.neoforged.fml.loading.FMLLoader.getLoadingModList().getModFileById("voxy_neoforged") != null;
+                }
+            } catch (Throwable t) {
+                try {
+                    Class.forName("me.cortex.voxy.client.core.VoxyRenderSystem", false, getClass().getClassLoader());
+                    return true;
+                } catch (Throwable ignored) {
+                    return false;
+                }
+            }
+            return false;
+        }
         return true;
     }
 

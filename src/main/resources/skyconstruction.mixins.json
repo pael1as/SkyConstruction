@@ -22,7 +22,9 @@
   "client": [
     "LayerLightSectionStorageMixin",
     "SodiumRenderSectionManagerMixin",
-    "ViewAreaMixin"
+    "ViewAreaMixin",
+    "VoxyIngestServiceMixin",
+    "VoxyRenderSystemMixin"
   ],
   "injectors": {
     "defaultRequire": 1

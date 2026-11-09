@@ -1,6 +1,6 @@
 package com.example.skyconstruction.mixin;
 
-import com.example.skyconstruction.SkyConstruction;
+import com.example.skyconstruction.SkyConstructionVoxyForge;
 import com.example.skyconstruction.client.ClientSkyConstructionData;
 import it.unimi.dsi.fastutil.longs.Long2ReferenceMap;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
@@ -95,7 +95,7 @@ public abstract class SodiumRenderSectionManagerMixin {
     private void skyForge$logOnce(Throwable t) {
         if (!this.skyForge$errorLogged) {
             this.skyForge$errorLogged = true;
-            SkyConstruction.LOGGER.warn("[SkyConstruction] Ошибка при управлении секциями Sodium (повторы подавлены)", t);
+            SkyConstructionVoxyForge.LOGGER.warn("[SkyConstruction] Ошибка при управлении секциями Sodium (повторы подавлены)", t);
         }
     }
 
