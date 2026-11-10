@@ -1,3 +1,7 @@
+[![CurseForge](https://img.shields.io/badge/CurseForge-SkyConstruction-orange?logo=curseforge&logoColor=white)](https://www.curseforge.com/minecraft/mc-mods/skyconstruction)
+[![CurseForge](https://img.shields.io/badge/CurseForge-VoxyForge-orange?logo=curseforge&logoColor=white)](https://www.curseforge.com/minecraft/mc-mods/skyconstruction-voxyforge)
+[![Modrinth](https://img.shields.io/badge/Modrinth-SkyConstruction-green?logo=modrinth&logoColor=white)](https://modrinth.com/mod/skyconstruction)
+[![Modrinth](https://img.shields.io/badge/Modrinth-VoxyForge-green?logo=modrinth&logoColor=white)](https://modrinth.com/mod/skyconstruction-voxyforge)
 # SkyConstruction (NeoForge 1.21.1)
 
 [![NeoForge](https://img.shields.io/badge/NeoForge-21.1.228+-orange.svg)](https://neoforged.net/)
