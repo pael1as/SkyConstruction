@@ -1,3 +1,8 @@
+[![CurseForge](https://img.shields.io/badge/CurseForge-SkyConstruction-orange?logo=curseforge&logoColor=white)](https://www.curseforge.com/minecraft/mc-mods/skyconstruction)
+[![CurseForge](https://img.shields.io/badge/CurseForge-VoxyForge-orange?logo=curseforge&logoColor=white)](https://www.curseforge.com/minecraft/mc-mods/skyconstruction-voxyforge)
+[![Modrinth](https://img.shields.io/badge/Modrinth-SkyConstruction-green?logo=modrinth&logoColor=white)](https://modrinth.com/mod/skyconstruction)
+[![Modrinth](https://img.shields.io/badge/Modrinth-VoxyForge-green?logo=modrinth&logoColor=white)](https://modrinth.com/mod/skyconstruction-voxyforge)
+
 # SkyConstruction (NeoForge 1.21.1)
 
 [![NeoForge](https://img.shields.io/badge/NeoForge-21.1.228+-orange.svg)](https://neoforged.net/)
@@ -8,7 +13,7 @@
 
 ---
 
-## 📦 Редакции проекта (Branches)
+## Редакции проекта (Branches)
 
 Проект поддерживается в двух специализированных ветках:
 
@@ -48,7 +53,7 @@
 
 ---
 
-## 🎮 Игровые команды
+## Игровые команды
 
 Мод включает процедурную команду для операторов сервера (OP ур. 2+):
 
@@ -64,7 +69,7 @@
 
 ---
 
-## 📋 Зависимости
+## Зависимости
 
 | Мод | Статус | Примечание |
 |---|---|---|
@@ -76,7 +81,7 @@
 
 ---
 
-## 🔨 Сборка из исходников
+## Сборка из исходников
 
 Требуется установленный **JDK 21**.
 
@@ -86,11 +91,11 @@ git clone https://github.com/USERNAME/SkyConstruction.git
 cd SkyConstruction
 
 # Сборка базовой версии
-git checkout main
+git checkout SkyConstruction
 ./gradlew build
 
 # Сборка Voxy-версии
-git checkout voxy
+git checkout SkyConstructionVoxy
 ./gradlew build
 ```
 
